@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Trilhas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 90%;
+            max-width: 1000px;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden; /* Para os cantos arredondados da tabela funcionarem */
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+        tr:hover {
+            background-color: #f1f9ff;
+        }
+        .btn-voltar {
+            margin-top: 30px;
+            padding: 10px 25px;
+            background-color: #2ecc71;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .btn-voltar:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <h2>Trilhas e Próximos Passos Registados</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID do Aluno</th>
+                <th>Nome da Trilha</th>
+                <th>Progresso (%)</th>
+                <th>Próximo Passo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="trilha : ${trilhas}">
+                <td th:text="${trilha.id}"></td>
+                <td th:text="${trilha.aluno_id}"></td>
+                <td th:text="${trilha.nome_trilha}"></td>
+                <td th:text="${trilha.progresso_pct}"></td>
+                <td th:text="${trilha.proximo_passo}"></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <a class="btn-voltar" href="/trilha/cadastrar">&larr; Voltar para o Cadastro</a>
+</body>
+</html>
